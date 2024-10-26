@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+       docker { image 'maven:latest' }
+    }
     options {
        timestamps()
        timeout(time: 1, unit: 'HOURS')
