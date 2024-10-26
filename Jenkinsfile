@@ -14,9 +14,9 @@ pipeline {
     }
     stages {
         stage('Build') {
-            agent {
-               label 'docker-maven'
-            }
+//             agent {
+//                label 'docker-maven'
+//             }
             steps {
                 script {
                     // Build the application using Maven
