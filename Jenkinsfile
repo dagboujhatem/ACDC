@@ -15,14 +15,20 @@ pipeline {
     stages {
         stage('Build') {
             agent {
-               docker { image 'maven:latest' }
+               label 'docker-maven'
             }
             steps {
                 script {
                     // Build the application using Maven
-                    sh 'mvn -B -DskipTests clean package'
+                    sh 'mvn -DskipTests clean package'
                 }
             }
         }
+//        stage('SonarQube Analysis') {
+//            def mvn = tool 'Default Maven';
+//            withSonarQubeEnv() {
+//              sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=ACDC"
+//            }
+//        }
     }
 }
