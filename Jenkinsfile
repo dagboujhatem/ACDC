@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-       docker { image 'maven:latest' }
-    }
+    agent any
     options {
        timestamps()
        timeout(time: 1, unit: 'HOURS')
@@ -16,6 +14,9 @@ pipeline {
     }
     stages {
         stage('Build') {
+            agent {
+               docker { image 'maven:latest' }
+            }
             steps {
                 script {
                     // Build the application using Maven
